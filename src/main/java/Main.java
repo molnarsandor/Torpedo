@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
        initPlayerOne();
        initPlayerTwo();
-        System.out.println("MINDEN HAJÓ KÉSZEN ÁLL, KEZDŐDJÖN A JÁTÉK!");
+       System.out.println("MINDEN HAJÓ KÉSZEN ÁLL, KEZDŐDJÖN A JÁTÉK!");
 
     }
     public static void initPlayerOne() throws IOException {
