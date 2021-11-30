@@ -6,13 +6,5 @@ public class OneBoxBoat extends Boats{
         this.setWhoOwn(_whoOwn);
 
     }
-    public void checkAlive(){
-        for(Coordinate c: this.getCoordinates()){
-            if(!c.getIsAlive()){
-                this.setAlive(false);
-            }
-        }
-    }
-
 
 }

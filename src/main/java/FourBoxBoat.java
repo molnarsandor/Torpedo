@@ -24,13 +24,4 @@ public class FourBoxBoat extends Boats{
         }
     }
 
-    public void  checkAlive(){
-        int counter = 0;
-        for(Coordinate c: this.getCoordinates()){
-            if(!c.getIsAlive() && counter == 2){
-                this.setAlive(false);
-            }
-            counter++;
-        }
-    }
 }

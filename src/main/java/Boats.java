@@ -1,24 +1,14 @@
 import java.util.Vector;
 
 public class Boats {
-    private Boolean isAlive;
     private Boolean isVertical;
     private int length;
     Vector<Coordinate> coordinates;
     private int whoOwn;
 
     public Boats(){
-        isAlive = true;
         length  = 0;
         coordinates  =new Vector<>();
-    }
-
-    public void setAlive(Boolean alive) {
-        isAlive = alive;
-    }
-
-    public Boolean getAlive() {
-        return isAlive;
     }
 
     public void setVertical(Boolean vertical) {

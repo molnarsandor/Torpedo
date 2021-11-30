@@ -9,7 +9,6 @@ public class TwoBoxBoat extends Boats{
         this.setVertical(_isVertical);
         this.addCoordinate(_x,_y);
         setCoordinates();
-
     }
     public void setCoordinates(){
         if(this.getVertical()){
@@ -23,17 +22,5 @@ public class TwoBoxBoat extends Boats{
             } // horizontal
         }
     }
-
-    public void  checkAlive(){
-        int counter = 0;
-        for(Coordinate c: this.getCoordinates()){
-            if(!c.getIsAlive() && counter == 2){
-                this.setAlive(false);
-            }
-            counter++;
-        }
-    }
-
-
 
 }

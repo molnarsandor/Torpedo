@@ -11,6 +11,7 @@ public class Board {
     private final int playerId;
     private final String playerName;
     private Boolean boatAdded;
+
     public Board(int _id, String _playerName){
         this.playerId = _id;
         this.playerName = _playerName;
@@ -20,7 +21,6 @@ public class Board {
     }
 
     private void initBoard(){
-
         for(int i=0;i<board.length;i++){
             for(int j=0;j< board[i].length;j++){
                 board[i][j]=0;
@@ -37,7 +37,6 @@ public class Board {
     }
 
     public void printBoard(){
-        System.out.println(playerName+'('+playerId+')'+" Táblája: ");
         for(int i=0;i<board.length;i++){
             for(int j=0;j< board[i].length;j++){
                 System.out.print(board[i][j]+"\t");
@@ -57,9 +56,10 @@ public class Board {
         }
         else{
             System.out.println("Már van itt hajód! Helyezd máshová!");
-        }}
+             }
+        }
         else{
-            System.out.println("Hibás koordináta!");
+            System.out.println("Hibás koordináta, próbáld újra!!");
         }
     }
 
@@ -70,7 +70,6 @@ public class Board {
             }
         }
         return true;
-
     }
 
     public boolean checkIndex(Vector<Coordinate> coordinates){
@@ -84,6 +83,29 @@ public class Board {
         }
         return true;
 
+    }
+    public boolean checkHitIndex(int _x, int _y){
+        if(_x > 10 || _x <= 0){
+            System.out.println("Hibás koordináta, próbáld újra!");
+            return false;
+        }
+        else if(_y > 10 || _y <= 0){
+            System.out.println("Hibás koordináta, próbáld újra!");
+            return false;
+        }
+       return true;
+    }
+
+    public int getPlace(int _x, int _y){
+        return board[_x-1][_y-1];
+    }
+
+    public void setHit(int _x, int _y){
+        board[_x-1][_y-1] = 8;
+    }
+
+    public int[][] getBoard(){
+        return this.board;
     }
 
 }
