@@ -7,12 +7,14 @@ public class Board {
        2 - player 2 hajója
     * */
 
-    int[][] board;
-    int playerId;
-    String playerName;
+    private final int[][] board;
+    private final int playerId;
+    private final String playerName;
+    private Boolean boatAdded;
     public Board(int _id, String _playerName){
         this.playerId = _id;
         this.playerName = _playerName;
+        boatAdded = false;
         this.board = new int[10][10];
         initBoard();
     }
@@ -24,6 +26,14 @@ public class Board {
                 board[i][j]=0;
             }
         }
+    }
+
+    public Boolean getBoatAdded() {
+        return this.boatAdded;
+    }
+
+    public void setBoatAdded(Boolean boatAdded) {
+        this.boatAdded = boatAdded;
     }
 
     public void printBoard(){
@@ -38,19 +48,37 @@ public class Board {
 
     public void addBoat(Boats boats){
         Vector<Coordinate> coordinates = boats.getCoordinates();
+        if(checkIndex(coordinates)){
         if(checkPlaceIsEmpty(coordinates)) {
             for (Coordinate coordinate : coordinates) {
                 board[coordinate.getX() - 1][coordinate.getY() - 1] = boats.getWhoOwn();
             }
+            setBoatAdded(true);
         }
         else{
             System.out.println("Már van itt hajód! Helyezd máshová!");
+        }}
+        else{
+            System.out.println("Hibás koordináta!");
         }
     }
 
     public boolean checkPlaceIsEmpty(Vector<Coordinate> coordinates){
         for (Coordinate coordinate : coordinates) {
-            if(board[coordinate.getX()-1][coordinate.getY()-1] != 0){
+            if(board[coordinate.getX()-1][coordinate.getY()-1] != 0 ){
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    public boolean checkIndex(Vector<Coordinate> coordinates){
+        for (Coordinate coordinate : coordinates) {
+            if(coordinate.getX()-1 < 0 || coordinate.getX() > 10 ){
+                return false;
+            }
+            else if(coordinate.getY()-1 < 0 || coordinate.getY() > 10){
                 return false;
             }
         }
